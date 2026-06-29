@@ -49,3 +49,6 @@ coverage/
 .temp/
 .tmp/
 .parcel-cache/
+
+# Self-Improving Agent learnings (keep local per-developer)
+.learnings/
