@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🐾 三只小猫翻牌冒险记 · 生日快乐！</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="app">
+
+    <!-- ========================================== -->
+    <!-- VIEW 1 · 欢迎页 / HOME                     -->
+    <!-- ========================================== -->
+    <section id="view-home" class="view active">
+      <div class="home-wrap">
+        <!-- Logo 标题 -->
+        <div class="home-logo">
+          <h1 class="title-logo">
+            🐾 三<span class="paw">o</span>只小猫翻牌冒险记
+          </h1>
+          <p class="subtitle">为你准备的 3 关闯关，最后有惊喜 👀</p>
+        </div>
+
+        <!-- 规则说明卡 -->
+        <div class="rule-card clay-card">
+          <h3 class="rule-title">🎮 游戏规则</h3>
+          <ul class="rule-list">
+            <li><span class="rule-num">1</span> 点击任意两张卡牌进行翻面</li>
+            <li><span class="rule-num">2</span> 图案相同则配对成功，保持打开</li>
+            <li><span class="rule-num">3</span> 图案不同则 0.8 秒后自动翻回</li>
+            <li><span class="rule-num danger">4</span> 第 3 关有 💣 记忆炸弹，翻到扣 2 步哦！</li>
+          </ul>
+        </div>
+
+        <!-- 三只小猫角色卡 -->
+        <div class="cats-row" id="home-cats">
+          <!-- 由 game.js 动态注入三只猫 -->
+        </div>
+
+        <!-- 开始按钮 -->
+        <div class="home-cta">
+          <button id="btn-start" class="btn btn-primary btn-hero">
+            🎂 开始冒险，送给你！
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VIEW 2 · 游戏关卡页 / GAME (3 关复用)      -->
+    <!-- ========================================== -->
+    <section id="view-game" class="view">
+      <div class="game-wrap">
+        <!-- 顶部状态栏 -->
+        <header class="game-bar clay-bar">
+          <div class="bar-left">
+            <span id="bar-level" class="bar-level">第 1 关 · 场景冒险篇</span>
+            <span id="bar-subtitle" class="bar-subtitle">看看三只小猫的日常～</span>
+          </div>
+          <div class="bar-center">
+            <div class="stat">
+              <span class="stat-label">剩余步数</span>
+              <span id="bar-steps" class="stat-value steps">30</span>
+            </div>
+          </div>
+          <div class="bar-right">
+            <div class="stat">
+              <span class="stat-label">配对</span>
+              <span class="stat-value"><span id="bar-matched">0</span> / <span id="bar-total">9</span></span>
+            </div>
+          </div>
+        </header>
+
+        <!-- 卡牌网格区 -->
+        <div id="card-grid" class="card-grid">
+          <!-- 由 game.js 动态注入卡牌 -->
+        </div>
+
+        <!-- 底部控制栏 -->
+        <footer class="game-footer">
+          <button id="btn-back-home" class="btn btn-ghost btn-sm">← 欢迎页</button>
+          <div id="toast" class="toast hidden"></div>
+          <button id="btn-reset-level" class="btn btn-ghost btn-sm">🔄 重来本关</button>
+        </footer>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VIEW 3 · 关卡过渡页 / TRANSITION            -->
+    <!-- ========================================== -->
+    <section id="view-transition" class="view">
+      <div class="trans-wrap">
+        <div class="trans-card clay-card">
+          <div class="trans-confetti" aria-hidden="true">🎉</div>
+          <h2 id="trans-title" class="trans-title">第 1 关通过！</h2>
+          <div class="trans-stats" id="trans-stats">
+            <!-- 由 game.js 动态注入 -->
+          </div>
+          <p id="trans-next-hint" class="trans-next-hint">下一关：国际节日大冒险！</p>
+          <button id="btn-next-level" class="btn btn-primary btn-lg">
+            ➡️ 下一关等你！
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VIEW 4 · 通关惊喜页 / FINALE                -->
+    <!-- ========================================== -->
+    <section id="view-finale" class="view">
+      <!-- 彩纸粒子（纯 CSS 动画） -->
+      <div id="confetti-layer" class="confetti-layer" aria-hidden="true"></div>
+
+      <div class="finale-wrap">
+        <!-- 生日快乐大标题 -->
+        <h1 class="finale-title" aria-label="生日快乐">
+          <span class="wobble" style="--d:0s">🎂</span>
+          <span class="wobble" style="--d:.08s">生</span>
+          <span class="wobble" style="--d:.16s">日</span>
+          <span class="wobble" style="--d:.24s">快</span>
+          <span class="wobble" style="--d:.32s">乐</span>
+          <span class="wobble" style="--d:.40s">！</span>
+        </h1>
+
+        <!-- 蛋糕 + 三只小猫围坐主视觉 -->
+        <div class="cake-scene">
+          <!-- 左边：毛肚爬蛋糕 -->
+          <div class="cat-scene cat-left" id="finale-cat-left" title="毛肚">
+            <div class="cat-avatar-cute" data-cat="maodu" data-pose="climb"></div>
+            <div class="cat-label">毛肚<br/><small>淘气大王</small></div>
+          </div>
+
+          <!-- 中间：3 层蛋糕 -->
+          <div class="cake-3d" aria-hidden="true">
+            <!-- 顶层 -->
+            <div class="cake-tier tier-top">
+              <div class="candle" style="left: 30%;">
+                <div class="flame"></div>
+              </div>
+              <div class="candle" style="left: 50%;">
+                <div class="flame"></div>
+              </div>
+              <div class="candle" style="left: 70%;">
+                <div class="flame"></div>
+              </div>
+              <div class="strawberry" style="top: -18px; left: 42%;">🍓</div>
+            </div>
+            <!-- 中层 -->
+            <div class="cake-tier tier-mid">
+              <span class="cake-deco" style="left:15%;">🍒</span>
+              <span class="cake-deco" style="left:40%;">🧁</span>
+              <span class="cake-deco" style="left:65%;">🍪</span>
+              <span class="cake-deco" style="left:85%;">🍬</span>
+            </div>
+            <!-- 底层 -->
+            <div class="cake-tier tier-bot">
+              <span class="cake-drip"></span>
+              <span class="cake-deco" style="left:10%;">🐾</span>
+              <span class="cake-deco" style="left:30%;">🎀</span>
+              <span class="cake-deco" style="left:50%;">⭐</span>
+              <span class="cake-deco" style="left:70%;">🎈</span>
+              <span class="cake-deco" style="left:90%;">🐾</span>
+            </div>
+            <!-- 蛋糕盘 -->
+            <div class="cake-plate"></div>
+          </div>
+
+          <!-- 右边：焦糖端坐 -->
+          <div class="cat-scene cat-right" id="finale-cat-right" title="焦糖">
+            <div class="cat-avatar-cute" data-cat="jiaotang" data-pose="sit"></div>
+            <div class="cat-label">焦糖<br/><small>乖乖小公主</small></div>
+          </div>
+        </div>
+
+        <!-- 前边：布丁短腿踮脚 -->
+        <div class="cat-scene cat-front" id="finale-cat-front" title="布丁">
+          <div class="cat-avatar-cute" data-cat="buding" data-pose="reach"></div>
+          <div class="cat-label">布丁<br/><small>呆萌短腿橘 · 够不着😭</small></div>
+        </div>
+
+        <!-- 祝福语 -->
+        <p class="finale-wish">愿三只小猫永远陪着你 · 岁岁年年 🐾</p>
+
+        <!-- 重玩按钮 -->
+        <button id="btn-replay" class="btn btn-primary btn-lg">
+          🔁 再玩一次，把惊喜再看一遍 😻
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
