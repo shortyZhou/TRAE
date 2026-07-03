@@ -11,7 +11,7 @@ const CATS = [
     emoji: '🐱',
     role: '淘气大王 · 虎斑机灵鬼',
     desc: '美短银虎斑+白腹，大圆深绿眼，粉色小鼻子',
-    looks: 'American Shorthair silver tabby cat with white belly and paws, classic black stripes on forehead, big round dark green eyes, pink nose, playful naughty expression, wearing a blue and red plaid harness badge with ribbons',
+    looks: 'American Shorthair silver tabby cat with white belly and paws, classic black stripes on forehead, big round dark green eyes, pink nose, playful naughty expression, wearing a blue and red plaid harness badge with ribbons, long slender athletic legs, typical cute upright cat sitting pose, legs tucked naturally under body in simple cat loaf sit, single cat with 4 paws and 1 tail only, NO extra paws NO extra tails NO duplicate limbs NO raised paws, clean simple pose',
   },
   {
     id: 'jiaotang',
@@ -19,7 +19,7 @@ const CATS = [
     emoji: '😺',
     role: '乖乖小公主 · 乳色大眼萌',
     desc: '乳白/淡金渐层，超大圆祖母绿眼睛，圆脸胖嘟嘟',
-    looks: 'British Shorthair golden chinchilla gradient pale cream cat, round face, huge round emerald eyes, serious calm expression, super fluffy fur, sitting upright elegant pose, wearing a blue plaid triangle bandana with a blue rosette badge and red ribbons',
+    looks: 'British Shorthair golden chinchilla gradient pale cream cat, round face, huge round emerald eyes, serious calm expression, super fluffy fur, sitting upright elegant pose, wearing a blue plaid triangle bandana with a blue rosette badge and red ribbons, long elegant slender legs, graceful pose showing long legs, clean plain white background, NO grey circle NO round mask NO ring shape NO circular halo in background',
   },
   {
     id: 'buding',
@@ -27,7 +27,7 @@ const CATS = [
     emoji: '😸',
     role: '呆萌短腿橘 · 中分发型',
     desc: '曼康基短腿长毛淡橘，标志性中分淡橘色额头发型',
-    looks: 'Munchkin cat short stubby legs, long fluffy pale cream-orange fur, signature center-parted orange bangs hairstyle on forehead, round amber eyes, chubby round face, silly cute confused expression, standing pose showing tiny short legs',
+    looks: 'Munchkin cat, extremely short stubby dwarf munchkin legs, extra long fluffy pale cream-orange coat with prominent long fur tufts on cheeks (fluffy cheek ruffs) and inside ears (lynx-style long ear tufts sticking out from ear tips), very fluffy fur framing the entire face, natural center-parted pale orange fur color division on forehead (just natural cat fur marking split down the middle, NOT a human wig or fake hairstyle, just natural fur pattern), round amber eyes, chubby round face, silly cute confused expression, standing pose showing very clear contrast between extremely short legs and long fluffy body fur',
   },
 ];
 
@@ -218,9 +218,7 @@ function renderHomeCats() {
     el.className = 'cat-profile';
     el.innerHTML = `
       <div class="cat-avatar" data-cat="${cat.id}"></div>
-      <div class="cat-name">${cat.name}</div>
-      <div class="cat-desc">${cat.role}</div>
-      <p class="cat-role">${cat.desc}</p>`;
+      <div class="cat-name">${cat.name}</div>`;
     wrap.appendChild(el);
     // 注入图片（或 fallback）
     const avatarSlot = el.querySelector('.cat-avatar');
@@ -353,7 +351,7 @@ function onCardClick(el, data) {
           second.el.classList.remove('shake');
           STATE.lockClicks = false;
         }, 450);
-      }, 550);
+      }, 650);
       return;
     }
     // ✅ 正常配对成功
@@ -383,7 +381,7 @@ function onCardClick(el, data) {
           second.el.classList.remove('shake');
         }, 450);
       }
-    }, 800);
+    }, 1000);
   }
 }
 
