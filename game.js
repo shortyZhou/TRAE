@@ -68,10 +68,10 @@ const LEVELS = [
   {
     id: 1,
     gridClass: 'level-1',
-    title: '第 1 关 · 场景冒险篇',
-    subtitle: '看看三只小猫的日常～',
-    rows: 3, cols: 6,
-    cats: CATS, themes: THEMES.L1, bombs: 0,
+    title: '第 1 关',
+    subtitle: '',
+    rows: 3, cols: 4,
+    cats: CATS.filter(c => c.id !== 'buding'), themes: THEMES.L1, bombs: 0,
     stepsLimit: 30,
     nextHint: '下一关：国际节日大冒险！🎄🏅🐰⚽',
   },
@@ -292,7 +292,8 @@ function loadLevel(idx) {
         <div class="card-face card-front"></div>
       </div>`;
 
-    // 正面注入图片（或 fallback）
+    // 正面注入图片（或 fallback）—— useAvatar=false：保留场景动作（爬树/钓鱼/洗澡）生成全身场景图，
+    // 同时 cat.looks 复用与介绍页相同的形象源（毛肚坐姿+长腿、焦糖长腿+坐姿）保持形象匹配
     const front = card.querySelector('.card-front');
     const img = document.createElement('img');
     img.alt = `${cardData.cat.name} · ${cardData.theme.name}`;

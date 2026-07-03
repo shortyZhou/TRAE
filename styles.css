@@ -334,7 +334,7 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   margin-bottom: 22px;
   perspective: 1200px;
 }
-.card-grid.level-1 { grid-template-columns: repeat(6, 1fr); }
+.card-grid.level-1 { grid-template-columns: repeat(4, 1fr); }
 .card-grid.level-2 { grid-template-columns: repeat(6, 1fr); }
 .card-grid.level-3 { grid-template-columns: repeat(6, 1fr); }
 
