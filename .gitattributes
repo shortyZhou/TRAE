@@ -1,0 +1,32 @@
+# Git 行尾规范化配置
+# 解决 Windows 环境下 Git 把 LF↔CRLF 转换误判成内容修改的「伪变更」问题
+# （典型表现：git diff --ignore-cr-at-eol 空但 git status 显示 modified）
+# 参考：Git 官方 gitattributes 文档，配置跟随仓库，所有协作者 clone 后自动生效
+
+# ---------- 通用：自动检测文本文件，统一按 LF 存储 ----------
+* text=auto eol=lf
+
+# ---------- 本项目核心文本类型：强制 LF 行尾 ----------
+*.md    text eol=lf
+*.js    text eol=lf
+*.ts    text eol=lf
+*.css   text eol=lf
+*.html  text eol=lf
+*.json  text eol=lf
+*.yaml  text eol=lf
+*.yml   text eol=lf
+*.sh    text eol=lf
+*.py    text eol=lf
+
+# PowerShell 脚本需要 CRLF 才能在 Windows PowerShell 控制台正常运行
+*.ps1   text eol=crlf
+
+# ---------- 二进制文件：不参与行尾转换 ----------
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.pdf   binary
+*.zip   binary
