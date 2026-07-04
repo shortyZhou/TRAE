@@ -73,7 +73,7 @@ const LEVELS = [
     rows: 3, cols: 4,
     cats: CATS.filter(c => c.id !== 'buding'), themes: THEMES.L1, bombs: 0,
     stepsLimit: 15,
-    nextHint: '下一关：国际节日大冒险！🎄🏅🐰⚽',
+    nextHint: null,
   },
   {
     id: 2,
