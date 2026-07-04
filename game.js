@@ -50,14 +50,12 @@ const THEMES = {
       prompt: ' mid autumn festival theme, holding mooncake with lotus seed paste, full moon and starry sky background, osmanthus flowers yellow' },
   ],
   L3: [
-    { id: 'spring-festival',  name: '春节', icon: '🧧',
-      prompt: ' chinese spring festival theme, wearing red tang suit with golden pattern, holding red lucky envelope, firecrackers and lanterns background' },
-    { id: 'dragon-boat',      name: '端午', icon: '🐲',
-      prompt: ' dragon boat festival theme, sitting inside mini bamboo steamer next to green rice dumplings zongzi, red sachet hanging, bamboo leaves background' },
-    { id: 'mid-autumn',       name: '中秋', icon: '🥮',
-      prompt: ' mid autumn festival theme, holding mooncake with lotus seed paste, full moon and starry sky background, osmanthus flowers yellow' },
-    { id: 'winter-solstice',  name: '冬至', icon: '🥟',
-      prompt: ' winter solstice theme, sitting next to plate of steamed dumplings jiaozi, wearing warm knitted scarf, soft cozy snow outside window' },
+    { id: 'cocktail',   name: '鸡尾酒', icon: '🍸',
+      prompt: ' enjoying fancy pink cocktail in martini glass with cherry garnish and tiny paper umbrella, cozy upscale cocktail bar neon purple and gold lighting background, elegant relaxed pose holding cocktail glass' },
+    { id: 'coffee',     name: '咖啡',   icon: '☕',
+      prompt: ' holding hot latte coffee cup with heart-shaped latte art foam, sitting at warm wooden cafe table next to a butter croissant, cozy coffee shop window with rain drops and golden hour sunlight background' },
+    { id: 'milk-tea',   name: '奶茶',   icon: '🧋',
+      prompt: ' drinking boba bubble milk tea with tapioca pearls through a cute striped straw, sitting at pastel pink dessert table with macarons and strawberry shortcake, kawaii bubble tea shop interior' },
   ],
 };
 
@@ -86,12 +84,12 @@ const LEVELS = [
   {
     id: 3,
     gridClass: 'level-3',
-    title: '第 3 关 · 传统节日篇',
-    subtitle: '小心记忆炸弹哦！💣',
-    rows: 5, cols: 6,
-    cats: CATS, themes: THEMES.L3, bombs: 3,
-    stepsLimit: 50,
-    nextHint: null, // 最终关 → 通关页
+    title: '第 3 关',
+    subtitle: '',
+    rows: 4, cols: 6,
+    cats: CATS, themes: THEMES.L3, bombs: 1,
+    stepsLimit: 35,
+    nextHint: null,
   },
 ];
 
@@ -130,6 +128,11 @@ const VIEWS = {
  * 若图片加载失败 → 自动 fallback 到 emoji
  */
 function buildCatImageUrl(cat, theme, useAvatar = false) {
+  if (theme && theme.id === 'bomb') {
+    const bombPrompt = 'Cute kawaii chibi cartoon cat wearing a giant round black bomb costume, only the cat\'s cute fluffy face with big whiskers and tiny paws sticking out from the bomb costume, long sparking fuse with bright orange fire sparks and small grey smoke puffs coming out of the top of the bomb costume, big shiny round emerald eyes, silly excited playful expression, pastel candy color palette, soft claymorphism lighting, playful watercolor 2D flat illustration, thick clean black outlines, no text no watermark, plain white background, square composition, hd quality, single centered character posing naturally, highly detailed fluffy fur texture on cat face and paws';
+    const encoded = encodeURIComponent(bombPrompt);
+    return `https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=${encoded}&image_size=square_hd`;
+  }
   const parts = [BASE_STYLE, cat.looks];
   if (!useAvatar && theme) {
     parts.push(theme.prompt || '');
@@ -157,10 +160,10 @@ function withFallback(imgEl, cat, theme, useAvatar = false) {
     if (useAvatar) {
       fallback.innerHTML = `<div class="cat-avatar-fallback" style="font-size:64px">${cat.emoji}</div>`;
     } else if (theme && theme.id === 'bomb') {
-      fallback.innerHTML = `
-        <div class="emoji-cat">💣</div>
-        <div class="emoji-theme">🐾</div>
-        <div class="cat-name-mini">记忆炸弹</div>`;
+      fallback.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1">
+  <div style="font-size:52px">😽</div>
+  <div style="font-size:72px">💣</div>
+</div>`;
     } else {
       fallback.innerHTML = `
         <div class="emoji-cat">${cat ? cat.emoji : '🐱'}</div>
