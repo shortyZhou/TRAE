@@ -34,12 +34,12 @@ const CATS = [
 /* ---------- 配置表：关卡主题（3 关 × 每关主题） ---------- */
 const THEMES = {
   L1: [
-    { id: 'climb-tree', name: '爬树',   icon: '🌳',
-      prompt: ' climbing a tall cherry blossom tree, spring pink leaves background, excited gripping branch pose' },
-    { id: 'fishing',    name: '钓鱼',   icon: '🎣',
-      prompt: ' fishing by a small blue pond with tiny fishing rod, fish jumping out, happy focused expression' },
-    { id: 'bathing',    name: '洗澡',   icon: '🛁',
-      prompt: ' in a cute bubble bath tiny bathtub, soap foam bubbles all around, pink rubber duck, wet funny face' },
+    { id: 'climb-cat-tree', name: '爬猫爬架',   icon: '🗼',
+      prompt: ' climbing on a tall multi-level wooden cat tree tower with sisal scratching posts, plush carpeted platforms and hanging feather wand toys dangling above, playful stretching pose gripping the top platform with claws, cozy bright pastel living room interior background' },
+    { id: 'snack-time',    name: '吃小零食',   icon: '🍪',
+      prompt: ' eating crunchy freeze-dried chicken cat treats from a tiny ceramic bowl, little treat crumbs stuck around mouth and whiskers, happy content expression licking lips after the snack, next to a glass jar full of colorful cat treats, warm pastel tiled kitchen floor background' },
+    { id: 'cat-bed-sit',  name: '坐猫窝',   icon: '🛏️',
+      prompt: ' sitting upright wide awake inside a fluffy round plush donut cat bed, tiny soft knit blanket draped over lap and paws, big bright wide open sparkling eyes looking directly at camera, alert curious happy cute expression, tiny pink paw pads visible, warm sunshine streaming through window, cozy pastel cream bedroom background with potted plants and soft cushions' },
   ],
   L2: [
     { id: 'spring-festival',  name: '春节', icon: '🧧',
