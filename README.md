@@ -30,6 +30,12 @@ TRAE/
 
 ## 🚀 快速开始
 
+### 🎮 在线体验 Live Demo
+
+> 网页小游戏已部署到 **腾讯云 CloudBase 静态网站托管**，每次 Push 到 `main` 分支会自动拉取并完成 CDN 部署，无需手动操作：
+>
+> 👉 **[🐾 三只小猫翻牌冒险记 · 生日大冒险（直接打开）](https://cloud-deployment-d1eq6g15a563ebc-1452791018.tcloudbaseapp.com/)**
+
 （待补充具体项目初始化步骤）
 
 ## 📝 Changelog
