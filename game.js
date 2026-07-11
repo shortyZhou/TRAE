@@ -86,9 +86,9 @@ const LEVELS = [
     gridClass: 'level-3',
     title: '第 3 关',
     subtitle: '',
-    rows: 4, cols: 6,
+    rows: 4, cols: 5,
     cats: CATS, themes: THEMES.L3, bombs: 1,
-    stepsLimit: 35,
+    stepsLimit: 25,
     nextHint: null,
   },
 ];
@@ -258,8 +258,8 @@ function loadLevel(idx) {
   for (let b = 0; b < (L.bombs || 0); b++) {
     types.push({
       type: `bomb-${b}`,
-      cat: { name: '记忆炸弹', emoji: '💣' },
-      theme: { id: 'bomb', name: '炸弹', icon: '💣' },
+      cat: { name: '库洛米炸弹', emoji: '💣' },
+      theme: { id: 'bomb', name: '库洛米炸弹', icon: '💣' },
       isBomb: true,
     });
   }
@@ -350,7 +350,7 @@ function onCardClick(el, data) {
         first.el.classList.add('shake');
         second.el.classList.add('shake');
         spendStep(2);
-        showToast('⚠️ 哎呀！匹配到了炸弹，扣 2 步～');
+        showToast('⚠️ 哎呀！匹配到了库洛米炸弹，扣 2 步～');
         setTimeout(() => {
           first.el.classList.remove('shake');
           second.el.classList.remove('shake');
@@ -380,7 +380,7 @@ function onCardClick(el, data) {
         spendStep(2);
         if (first.data.isBomb) first.el.classList.add('shake');
         if (second.data.isBomb) second.el.classList.add('shake');
-        showToast('💥 踩到记忆炸弹啦！额外扣 2 步～');
+        showToast('💥 踩到库洛米炸弹啦！额外扣 2 步～');
         setTimeout(() => {
           first.el.classList.remove('shake');
           second.el.classList.remove('shake');

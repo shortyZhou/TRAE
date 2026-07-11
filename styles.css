@@ -336,7 +336,7 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
 }
 .card-grid.level-1 { grid-template-columns: repeat(4, 1fr); }
 .card-grid.level-2 { grid-template-columns: repeat(6, 1fr); }
-.card-grid.level-3 { grid-template-columns: repeat(6, 1fr); }
+.card-grid.level-3 { grid-template-columns: repeat(5, 1fr); }
 
 /* 单张卡牌（3D 翻转） */
 .card {
