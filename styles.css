@@ -671,11 +671,6 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
   animation: floaty 2.8s ease-in-out infinite;
 }
-.strawberry {
-  position: absolute;
-  font-size: 28px;
-  animation: floaty 2.2s ease-in-out infinite;
-}
 @keyframes floaty {
   0%,100% { transform: translate(-50%, -50%); }
   50% { transform: translate(-50%, calc(-50% - 6px)); }
@@ -703,21 +698,8 @@ button { font-family: inherit; border: none; cursor: pointer; background: none; 
   from { transform: translateX(-50%) scale(1) rotate(-2deg); opacity: 0.9; }
   to   { transform: translateX(-50%) scale(1.08, 0.95) rotate(2deg); opacity: 1; }
 }
-.cake-plate {
-  position: absolute;
-  bottom: -18px;
-  left: 50%; transform: translateX(-50%);
-  width: 105%;
-  height: 22px;
-  background: linear-gradient(180deg, #FFFFFF, #E4EAF2);
-  border-radius: 50%;
-  box-shadow:
-    inset 0 3px 6px rgba(255,255,255,0.9),
-    0 16px 32px -14px rgba(61,64,91,0.35);
-  border: 2px solid rgba(255,255,255,0.95);
-}
 
-/* 猫咪围坐 */
+/* 猫咪围坐（布丁 cat-front 已从 finale 页移除，保留样式避免影响其他） */
 .cat-scene {
   align-self: end;
   justify-self: center;

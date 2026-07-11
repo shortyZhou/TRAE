@@ -460,7 +460,8 @@ function showTransition(info) {
    FINALE 通关页：猫咪头像注入 + 彩纸
    =========================================================== */
 function renderFinale() {
-  // 注入三只猫（左/右/前）的头像或 fallback
+  // 注入两只猫（左：毛肚爬蛋糕 + 右：焦糖端坐）的头像或 fallback
+  // （布丁已按用户要求从 finale 页移除，不再渲染 CATS[2]）
   const fill = (slotEl, cat, poseDesc) => {
     slotEl.innerHTML = '';
     const img = document.createElement('img');
@@ -475,7 +476,6 @@ function renderFinale() {
   };
   fill($('#finale-cat-left .cat-avatar-cute'),  CATS[0], 'climbing cake edge left side, tongue out naughty pose');
   fill($('#finale-cat-right .cat-avatar-cute'), CATS[1], 'sitting elegantly right side, eyes sparkles princess pose');
-  fill($('#finale-cat-front .cat-avatar-cute'), CATS[2], 'standing on short tiptoes reaching for top strawberry, super cute');
 }
 
 function startConfetti() {
