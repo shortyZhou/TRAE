@@ -265,7 +265,10 @@ function loadLevel(idx) {
   }
 
   // 每种类型 × 2（成对）→ 洗牌
-  STATE.totalPairs = types.length;
+  // ⚠️ 第三关炸弹组不算入「需要完成的配对目标」（炸弹是干扰卡，配对成功不计数且会被翻回惩罚）
+  //   只统计 isBomb=false 的正常卡类型作为 totalPairs，
+  //   避免出现「9组正常卡配满后 totalPairs=10（含1组炸弹）永远差1组不通关」的 Bug
+  STATE.totalPairs = types.filter(t => !t.isBomb).length;
   const deck = shuffle([...types, ...types]); // 每类型 2 张
 
   // 顶部栏
