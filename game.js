@@ -105,6 +105,7 @@ const STATE = {
   totalPairs: 0,
   firstCard: null,
   lockClicks: false,
+  stepsExhausted: false,
   startTs: 0,
   completedLevels: [],
 };
@@ -241,6 +242,7 @@ function loadLevel(idx) {
   STATE.matchedPairs = 0;
   STATE.firstCard = null;
   STATE.lockClicks = false;
+  STATE.stepsExhausted = false;
   STATE.startTs = Date.now();
 
   // 构造配对类型数组（cat+theme 组合 + 炸弹）
@@ -317,6 +319,7 @@ function loadLevel(idx) {
    卡牌点击：翻牌 + 配对判定 + 炸弹
    =========================================================== */
 function onCardClick(el, data) {
+  if (STATE.stepsExhausted) return;
   if (STATE.lockClicks) return;
   if (el.classList.contains('flipped') || el.classList.contains('matched')) return;
 
@@ -403,8 +406,10 @@ function spendStep(n = 1) {
   if (STATE.stepsLeft <= 5) {
     stepsEl.classList.add('danger');
   }
-  // 步数为 0 且未全部配对 → 重来提示
+  // 步数为 0 且未全部配对 → 重来提示 + 永久禁止翻牌（避免用户步数耗尽后仍能继续配对通关）
   if (STATE.stepsLeft <= 0 && STATE.matchedPairs < STATE.totalPairs) {
+    STATE.stepsExhausted = true;
+    STATE.lockClicks = true;
     setTimeout(() => {
       showToast('😵 步数用光啦～点击右下角「重来本关」再来一次吧！', 3000);
     }, 300);
