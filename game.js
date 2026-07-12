@@ -78,7 +78,7 @@ const LEVELS = [
     subtitle: '',
     rows: 3, cols: 6,
     cats: CATS, themes: THEMES.L2, bombs: 0,
-    stepsLimit: 20,
+    stepsLimit: 24,
     nextHint: null,
   },
   {
@@ -88,7 +88,7 @@ const LEVELS = [
     subtitle: '',
     rows: 4, cols: 5,
     cats: CATS, themes: THEMES.L3, bombs: 1,
-    stepsLimit: 25,
+    stepsLimit: 33,
     nextHint: null,
   },
 ];
